@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niralya's Sacred Ceremony</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Meera+Inimai&family=Quintessential&display=swap');
+        
+        :root {
+            --temple-gold: #ffd700;
+            --silk-red: #8b0000;
+            --sandstone: #f4e4bc;
+        }
+
+        body {
+            font-family: 'Marcellus', serif;
+            background-color: #1a0505;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        .phone-container {
+            width: 100%;
+            max-width: 480px;
+            background: var(--silk-red);
+            min-height: 100vh;
+            position: relative;
+            box-shadow: 0 0 100px rgba(0,0,0,0.8);
+            border-left: 4px solid var(--temple-gold);
+            border-right: 4px solid var(--temple-gold);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 86c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm66-3c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm-46-45c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zm54 54c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM58 7c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm-40 95c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm80-27c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm-76 10c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm44 0c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2zm24-57c0 1.105-.895 2-2 2s-2-.895-2-2 .895-2 2-2 2 .895 2 2z' fill='%23500' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .gold-border-frame {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 2px solid var(--temple-gold);
+            pointer-events: none;
+            z-index: 50;
+        }
+
+        .gold-corner {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            z-index: 60;
+        }
+        .c-tl { top: 10px; left: 10px; border-top: 5px solid var(--temple-gold); border-left: 5px solid var(--temple-gold); }
+        .c-tr { top: 10px; right: 10px; border-top: 5px solid var(--temple-gold); border-right: 5px solid var(--temple-gold); }
+        .c-bl { bottom: 10px; left: 10px; border-bottom: 5px solid var(--temple-gold); border-left: 5px solid var(--temple-gold); }
+        .c-br { bottom: 10px; right: 10px; border-bottom: 5px solid var(--temple-gold); border-right: 5px solid var(--temple-gold); }
+
+        .image-wrapper {
+            margin: 40px 30px 20px;
+            border: 8px solid var(--sandstone);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            aspect-ratio: 9 / 16;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.15); }
+        }
+
+        .title-section {
+            text-align: center;
+            color: var(--sandstone);
+            padding: 0 40px;
+        }
+
+        .quint {
+            font-family: 'Quintessential', cursive;
+            color: var(--temple-gold);
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+        }
+
+        .date-box {
+            background: rgba(244, 228, 188, 0.1);
+            border: 1px solid var(--temple-gold);
+            padding: 15px;
+            margin: 20px 40px;
+            text-align: center;
+            color: var(--sandstone);
+        }
+
+        .btn-temple {
+            background: var(--temple-gold);
+            color: var(--silk-red);
+            font-family: 'Marcellus', serif;
+            font-weight: bold;
+            padding: 15px;
+            border-radius: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-temple:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px);
+        }
+
+        .lotus-float {
+            position: absolute;
+            bottom: -20px;
+            width: 100px;
+            opacity: 0.1;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .floating-contacts {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+            padding-bottom: 60px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--sandstone);
+            color: var(--silk-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="phone-container">
+    <!-- Ornate Borders -->
+    <div class="gold-border-frame"></div>
+    <div class="gold-corner c-tl"></div>
+    <div class="gold-corner c-tr"></div>
+    <div class="gold-corner c-bl"></div>
+    <div class="gold-corner c-br"></div>
+
+    <!-- Image Section -->
+    <div class="image-wrapper">
+        <img src="https://drive.google.com/thumbnail?id=182Ljj22AfF412Osset0Oj5vDaCD0O8xE&sz=w1200" 
+             alt="Invitation Image" 
+             class="main-img"
+             onerror="this.src='https://images.unsplash.com/photo-1545062990-4a95e8e4b96d?auto=format&fit=crop&q=80&w=1000'">
+    </div>
+
+    <!-- Content Section -->
+    <div class="title-section">
+        <p class="text-xs tracking-[0.3em] uppercase opacity-70 mb-2">With Divine Blessings</p>
+        <h1 class="quint">Niralya's</h1>
+        <p class="text-sm italic tracking-widest text-white">Tonsure & Ear Piercing</p>
+    </div>
+
+    <!-- Date Info -->
+    <div class="date-box">
+        <div class="text-xs uppercase tracking-widest mb-1">Join us on</div>
+        <div class="text-2xl font-bold">20th MAY 2026</div>
+        <div class="text-sm opacity-80 mt-1">Wednesday • 9:10 AM onwards</div>
+    </div>
+
+    <!-- Action Button -->
+    <div class="px-10 mt-6">
+        <a href="https://maps.app.goo.gl/Uq23ZJhvr32nU83w5?g_st=aw" target="_blank" class="btn-temple">
+            <i class="fa-solid fa-map-pin"></i>
+            Reach the Venue
+        </a>
+    </div>
+
+    <!-- Contacts -->
+    <div class="floating-contacts">
+        <a href="tel:+919843081709" class="contact-icon" title="Call Iyappan">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+        <a href="https://wa.me/919843081709" class="contact-icon" title="WhatsApp Iyappan">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="tel:+918610329867" class="contact-icon" title="Call Reshma">
+            <i class="fa-solid fa-person-dress"></i>
+        </a>
+    </div>
+
+    <!-- Decorative Elements -->
+    <svg class="lotus-float left-10" viewBox="0 0 100 100">
+        <path fill="gold" d="M50 20 C60 40 90 50 50 80 C10 50 40 40 50 20" />
+    </svg>
+    <svg class="lotus-float right-10" style="animation-delay: -3s" viewBox="0 0 100 100">
+        <path fill="gold" d="M50 20 C60 40 90 50 50 80 C10 50 40 40 50 20" />
+    </svg>
+
+    <p class="text-center text-[10px] text-yellow-200/50 uppercase tracking-[0.5em] pb-10">
+        Invitation by Family
+    </p>
+</div>
+
+<script>
+    // Simple logic to make the whole container shareable via Web Share API if supported
+    document.addEventListener('dblclick', () => {
+        if (navigator.share) {
+            navigator.share({
+                title: "Niralya's Invitation",
+                text: "You are invited to Niralya's Ceremony on May 20th, 2026.",
+                url: window.location.href
+            });
+        }
+    });
+</script>
+
+</body>
+</html>
