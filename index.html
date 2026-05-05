@@ -25,13 +25,10 @@
             height: 100%;
         }
 
-        /* Animated Velvet Background */
         .page-bg {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: radial-gradient(circle at center, var(--velvet) 0%, var(--dark-velvet) 100%);
             z-index: -1;
         }
@@ -48,24 +45,18 @@
             align-items: center;
         }
 
-        /* Particles Effect */
         #particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 1;
         }
 
-        /* Entrance Animation - The Envelope */
         #gatekeeper {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: var(--dark-velvet);
             z-index: 2000;
             display: flex;
@@ -91,12 +82,11 @@
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(212, 175, 55, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+            0%   { transform: scale(1);    box-shadow: 0 0 0 0   rgba(212,175,55,0.7); }
+            70%  { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(212,175,55,0);   }
+            100% { transform: scale(1);    box-shadow: 0 0 0 0   rgba(212,175,55,0);   }
         }
 
-        /* Main Content Container */
         .invitation-card {
             width: 90%;
             margin: 40px auto;
@@ -107,6 +97,7 @@
             opacity: 0;
             transform: translateY(50px);
             transition: all 1s ease 0.5s;
+            z-index: 2;
         }
 
         .invitation-card.reveal {
@@ -135,9 +126,7 @@
             transition: transform 8s ease;
         }
 
-        .main-image-container:hover img {
-            transform: scale(1.1);
-        }
+        .main-image-container:hover img { transform: scale(1.1); }
 
         .text-content {
             padding: 40px 20px;
@@ -187,7 +176,7 @@
             text-align: center;
         }
 
-        /* Floating Nav */
+        /* Bottom Nav */
         .bottom-nav {
             position: fixed;
             bottom: 20px;
@@ -213,155 +202,306 @@
             justify-content: center;
             border-radius: 50%;
             transition: all 0.3s;
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-decoration: none;
         }
 
-        .nav-item:active { background: var(--gold); color: white; }
+        .nav-item:active { background: var(--gold); color: #2d0202; }
 
+        /* ── Contact Modal ── */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.75);
+            z-index: 3000;
+            display: none;
+            justify-content: center;
+            align-items: flex-end;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.show { display: flex; }
+
+        .contact-modal {
+            width: 100%;
+            max-width: 480px;
+            background: #1a0101;
+            border: 1px solid var(--gold);
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            padding: 30px 20px 50px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .contact-modal.slide-up { transform: translateY(0); }
+
+        .modal-handle {
+            width: 40px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+            margin: 0 auto 22px;
+            opacity: 0.5;
+        }
+
+        .modal-title {
+            font-family: 'Cinzel Decorative', cursive;
+            color: var(--gold);
+            font-size: 0.75rem;
+            text-align: center;
+            letter-spacing: 3px;
+            margin-bottom: 22px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 18px;
+            border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            background: rgba(212,175,55,0.05);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .contact-item:active {
+            background: rgba(212,175,55,0.15);
+            transform: scale(0.98);
+        }
+
+        .contact-name {
+            color: var(--light-gold);
+            font-weight: 600;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        .contact-number {
+            color: var(--gold);
+            font-size: 0.75rem;
+            opacity: 0.65;
+            margin-top: 4px;
+        }
+
+        .call-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2d0202;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .modal-close {
+            width: 100%;
+            margin-top: 16px;
+            padding: 13px;
+            background: transparent;
+            border: 1px solid rgba(212,175,55,0.3);
+            color: var(--gold);
+            border-radius: 10px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Music icon pulse when playing */
+        @keyframes musicPulse {
+            0%,100% { transform: scale(1) rotate(0deg); }
+            25%      { transform: scale(1.15) rotate(-8deg); }
+            75%      { transform: scale(1.15) rotate(8deg); }
+        }
+
+        .music-playing { animation: musicPulse 0.7s ease infinite; color: #fcf6ba !important; }
     </style>
 </head>
 <body>
 
-    <div class="page-bg"></div>
-    <canvas id="particles"></canvas>
+<div class="page-bg"></div>
+<canvas id="particles"></canvas>
 
-    <!-- Entrance Overlay -->
-    <div id="gatekeeper">
-        <div class="text-white mb-8 text-center uppercase tracking-[0.4em] text-xs">CLICK TO OPEN</div>
-        <div class="seal" onclick="openInvitation()">
-            <img src="https://img.icons8.com/ios-filled/100/2d0202/lotus.png" width="60" alt="Lotus Seal">
-        </div>
-        <div class="mt-8 text-gold font-serif italic text-light-gold opacity-60">Tap the seal to open</div>
+<!-- Entrance Overlay -->
+<div id="gatekeeper">
+    <div class="text-white mb-8 text-center uppercase tracking-[0.4em] text-xs">CLICK TO OPEN</div>
+    <div class="seal" onclick="openInvitation()">
+        <img src="https://img.icons8.com/ios-filled/100/2d0202/lotus.png" width="60" alt="Lotus Seal">
     </div>
+    <div class="mt-8 font-serif italic opacity-60" style="color:var(--light-gold)">Tap the seal to open</div>
+</div>
 
-    <div class="phone-frame">
-        <div class="invitation-card" id="mainCard">
-            <div class="inner-border">
-                <!-- Image -->
-                <div class="main-image-container">
-                    <img src="https://drive.google.com/thumbnail?id=182Ljj22AfF412Osset0Oj5vDaCD0O8xE&sz=w1200" 
-                         alt="Ceremony Invitation"
-                         onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000'">
+<div class="phone-frame">
+    <div class="invitation-card" id="mainCard">
+        <div class="inner-border">
+            <div class="main-image-container">
+                <img src="https://drive.google.com/thumbnail?id=1bJFwgKro-HZmXpeCVnhvKeYynO5N5RQs&sz=w1200"
+                     alt="Ceremony Invitation"
+                     onerror="this.src='https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=1000'">
+            </div>
+
+            <div class="text-content">
+                <div class="ornament"></div>
+                <p class="uppercase tracking-[0.3em] text-[10px] mb-2">With Divine Blessings of God</p>
+                <h2 class="grand-title">NIRALYA</h2>
+                <p class="script-font">Tonsure & Ear Piercing</p>
+
+                <div class="border-y border-gold/30 py-6 my-6">
+                    <p class="text-xl font-bold tracking-widest">WEDNESDAY</p>
+                    <p class="text-4xl font-black my-2">MAY 20, 2026</p>
+                    <p class="text-sm opacity-80">TIMING: 09:10 AM - 10:00 AM</p>
                 </div>
 
-                <!-- Text Content -->
-                <div class="text-content">
-                    <div class="ornament"></div>
-                    <p class="uppercase tracking-[0.3em] text-[10px] mb-2">With Divine Blessings of God</p>
-                    <h2 class="grand-title">NIRALYA</h2>
-                    <p class="script-font">Tonsure & Ear Piercing</p>
-                    
-                    <div class="border-y border-gold/30 py-6 my-6">
-                        <p class="text-xl font-bold tracking-widest">WEDNESDAY</p>
-                        <p class="text-4xl font-black my-2">MAY 20, 2026</p>
-                        <p class="text-sm opacity-80">TIMING: 09:10 AM - 10:00 AM</p>
-                    </div>
+                <p class="text-xs italic opacity-60 leading-relaxed px-4">
+                    "Your presence will add a special touch of grace to our celebration."
+                </p>
 
-                    <p class="text-xs italic opacity-60 leading-relaxed px-4">
-                        "Your presence will add a special touch of grace to our celebration."
-                    </p>
-
-                    <a href="https://maps.app.goo.gl/Uq23ZJhvr32nU83w5?g_st=aw" target="_blank" class="btn-gold">
-                        <i class="fa-solid fa-compass-outline mr-2"></i> Navigate to Venue
-                    </a>
-                </div>
+                <a href="https://maps.app.goo.gl/Uq23ZJhvr32nU83w5?g_st=aw" target="_blank" class="btn-gold">
+                    <i class="fa-solid fa-location-dot mr-2"></i> Navigate to Venue
+                </a>
             </div>
         </div>
-
-        <div class="pb-32"></div>
     </div>
+    <div class="pb-32"></div>
+</div>
 
-    <!-- Quick Navigation -->
-    <div class="bottom-nav">
-        <a href="tel:+919843081709" class="nav-item"><i class="fa-solid fa-phone"></i></a>
-        <a href="https://wa.me/919843081709?text=Congratulations%20on%20Niralya's%20ceremony!" class="nav-item"><i class="fa-brands fa-whatsapp"></i></a>
-        <a href="https://maps.app.goo.gl/Uq23ZJhvr32nU83w5?g_st=aw" class="nav-item"><i class="fa-solid fa-location-arrow"></i></a>
-        <button onclick="shareInvite()" class="nav-item"><i class="fa-solid fa-share-nodes"></i></button>
+<!-- Contact Modal -->
+<div class="modal-overlay" id="contactModal" onclick="closeModalOutside(event)">
+    <div class="contact-modal" id="contactModalInner">
+        <div class="modal-handle"></div>
+        <p class="modal-title">Contact the Family</p>
+
+        <a href="tel:+919843081709" class="contact-item">
+            <div>
+                <div class="contact-name">Iyyappan</div>
+                <div class="contact-number">+91 98430 81709</div>
+            </div>
+            <div class="call-icon"><i class="fa-solid fa-phone"></i></div>
+        </a>
+
+        <a href="tel:+918610329867" class="contact-item">
+            <div>
+                <div class="contact-name">Reshma</div>
+                <div class="contact-number">+91 86103 29867</div>
+            </div>
+            <div class="call-icon"><i class="fa-solid fa-phone"></i></div>
+        </a>
+
+        <button class="modal-close" onclick="hideModal()">✕ &nbsp; Close</button>
     </div>
+</div>
 
-    <script>
-        // Opening Animation
-        function openInvitation() {
-            const gate = document.getElementById('gatekeeper');
-            const card = document.getElementById('mainCard');
-            
-            gate.style.transform = 'translateY(-100%)';
-            setTimeout(() => {
-                card.classList.add('reveal');
-                gate.style.display = 'none';
-            }, 800);
+<!-- Quick Navigation -->
+<div class="bottom-nav">
+    <button onclick="showContacts()" class="nav-item" title="Call"><i class="fa-solid fa-phone"></i></button>
+    <button onclick="toggleMusic()" class="nav-item" id="musicBtn" title="Music"><i class="fa-solid fa-music"></i></button>
+    <a href="https://maps.app.goo.gl/Uq23ZJhvr32nU83w5?g_st=aw" class="nav-item" title="Directions"><i class="fa-solid fa-location-arrow"></i></a>
+    <button onclick="shareInvite()" class="nav-item" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
+</div>
+
+<!-- Background Music -->
+<audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+    /* ── Entrance ── */
+    function openInvitation() {
+        const gate = document.getElementById('gatekeeper');
+        const card = document.getElementById('mainCard');
+        gate.style.transform = 'translateY(-100%)';
+        setTimeout(() => { card.classList.add('reveal'); gate.style.display = 'none'; }, 800);
+    }
+
+    /* ── Contact Modal ── */
+    function showContacts() {
+        document.getElementById('contactModal').classList.add('show');
+        setTimeout(() => document.getElementById('contactModalInner').classList.add('slide-up'), 10);
+    }
+
+    function hideModal() {
+        document.getElementById('contactModalInner').classList.remove('slide-up');
+        setTimeout(() => document.getElementById('contactModal').classList.remove('show'), 400);
+    }
+
+    function closeModalOutside(e) {
+        if (e.target === document.getElementById('contactModal')) hideModal();
+    }
+
+    /* ── Music ── */
+    let musicPlaying = false;
+    function toggleMusic() {
+        const audio = document.getElementById('bgMusic');
+        const icon  = document.getElementById('musicBtn').querySelector('i');
+        if (musicPlaying) {
+            audio.pause();
+            icon.classList.remove('music-playing');
+        } else {
+            audio.play().catch(() => {});
+            icon.classList.add('music-playing');
         }
+        musicPlaying = !musicPlaying;
+    }
 
-        // Particle System
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+    /* ── Particles ── */
+    const canvas = document.getElementById('particles');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
 
-        function resize() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+
+    class Particle {
+        constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size   = Math.random() * 2 + 0.5;
+            this.speedY = Math.random() * 1 + 0.2;
+            this.speedX = Math.random() * 0.5 - 0.25;
+            this.opacity = Math.random() * 0.5 + 0.2;
         }
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedY = Math.random() * 1 + 0.2;
-                this.speedX = Math.random() * 0.5 - 0.25;
-                this.opacity = Math.random() * 0.5 + 0.2;
-            }
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                if (this.y > canvas.height) this.y = -10;
-            }
-            draw() {
-                ctx.fillStyle = `rgba(212, 175, 55, ${this.opacity})`;
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
+        update() {
+            this.y += this.speedY; this.x += this.speedX;
+            if (this.y > canvas.height) this.y = -10;
         }
-
-        function init() {
-            particles = [];
-            for (let i = 0; i < 80; i++) {
-                particles.push(new Particle());
-            }
+        draw() {
+            ctx.fillStyle = `rgba(212,175,55,${this.opacity})`;
+            ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
         }
+    }
 
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            requestAnimationFrame(animate);
+    function init() { particles = []; for (let i = 0; i < 80; i++) particles.push(new Particle()); }
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => { p.update(); p.draw(); });
+        requestAnimationFrame(animate);
+    }
+
+    window.addEventListener('resize', resize);
+    resize(); init(); animate();
+
+    /* ── Share ── */
+    function shareInvite() {
+        if (navigator.share) {
+            navigator.share({ title: "Niralya's Ceremony Invitation", text: "We invite you to Niralya's Tonsure & Ear Piercing ceremony on May 20, 2026.", url: window.location.href });
+        } else {
+            const el = document.createElement('textarea');
+            el.value = window.location.href;
+            document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el);
+            alert("Link copied to clipboard!");
         }
-
-        window.addEventListener('resize', resize);
-        resize();
-        init();
-        animate();
-
-        function shareInvite() {
-            if (navigator.share) {
-                navigator.share({
-                    title: "Niralya's Ceremony Invitation",
-                    text: "We invite you to Niralya's Tonsure & Ear Piercing ceremony on May 20, 2026.",
-                    url: window.location.href
-                });
-            } else {
-                // Fallback: Copy to clipboard
-                const el = document.createElement('textarea');
-                el.value = window.location.href;
-                document.body.appendChild(el);
-                el.select();
-                document.execCommand('copy');
-                document.body.removeChild(el);
-                alert("Link copied to clipboard!");
-            }
-        }
-    </script>
+    }
+</script>
 </body>
 </html>
