@@ -4,12 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niralya's Invitation</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e0000'/%3E%3Cg fill='%23c8a84b'%3E%3C!-- center petal --%3E%3Cellipse cx='50' cy='42' rx='10' ry='22' /%3E%3C!-- left petals --%3E%3Cellipse cx='50' cy='42' rx='10' ry='22' transform='rotate(-35 50 62)'/%3E%3Cellipse cx='50' cy='42' rx='10' ry='22' transform='rotate(35 50 62)'/%3E%3C!-- outer petals --%3E%3Cellipse cx='50' cy='42' rx='8' ry='18' transform='rotate(-65 50 62)'/%3E%3Cellipse cx='50' cy='42' rx='8' ry='18' transform='rotate(65 50 62)'/%3E%3C!-- water base --%3E%3Cellipse cx='50' cy='74' rx='28' ry='5' opacity='0.4'/%3E%3C/g%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Cormorant:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%231e0000'/%3E%3Cg fill='%23c8a84b'%3E%3Cellipse cx='50' cy='42' rx='10' ry='22' /%3E%3Cellipse cx='50' cy='42' rx='10' ry='22' transform='rotate(-35 50 62)'/%3E%3Cellipse cx='50' cy='42' rx='10' ry='22' transform='rotate(35 50 62)'/%3E%3Cellipse cx='50' cy='42' rx='8' ry='18' transform='rotate(-65 50 62)'/%3E%3Cellipse cx='50' cy='42' rx='8' ry='18' transform='rotate(65 50 62)'/%3E%3Cellipse cx='50' cy='74' rx='28' ry='5' opacity='0.4'/%3E%3C/g%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Cormorant:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Great+Vibes&family=Montserrat:wght@200;400;600&display=swap');
 
@@ -214,7 +213,7 @@
 
         .nav-item:active { background: var(--gold); color: #2d0202; }
 
-        /* ── Contact Modal ── */
+        /* Contact Modal */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -323,14 +322,73 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* Music icon pulse when playing */
-        @keyframes musicPulse {
-            0%,100% { transform: scale(1) rotate(0deg); }
-            25%      { transform: scale(1.15) rotate(-8deg); }
-            75%      { transform: scale(1.15) rotate(8deg); }
+        /* Countdown Modal */
+        .countdown-modal {
+            width: 100%;
+            max-width: 480px;
+            background: #1a0101;
+            border: 1px solid var(--gold);
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            padding: 30px 20px 50px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        .music-playing { animation: musicPulse 0.7s ease infinite; color: #fcf6ba !important; }
+        .countdown-modal.slide-up { transform: translateY(0); }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .countdown-box {
+            background: rgba(212,175,55,0.08);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 12px;
+            padding: 14px 8px;
+            text-align: center;
+        }
+
+        .countdown-number {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(to bottom, #fcf6ba, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            display: block;
+            min-width: 2ch;
+        }
+
+        .countdown-label {
+            display: block;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0.6;
+            margin-top: 6px;
+        }
+
+        .ceremony-arrived {
+            text-align: center;
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--light-gold);
+            padding: 20px 0;
+        }
+
+        @keyframes tickPop {
+            0%   { transform: scale(1); }
+            50%  { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .tick-pop { animation: tickPop 0.3s ease; }
     </style>
 </head>
 <body>
@@ -382,7 +440,7 @@
 </div>
 
 <!-- Contact Modal -->
-<div class="modal-overlay" id="contactModal" onclick="closeModalOutside(event)">
+<div class="modal-overlay" id="contactModal" onclick="closeContactOutside(event)">
     <div class="contact-modal" id="contactModalInner">
         <div class="modal-handle"></div>
         <p class="modal-title">Contact the Family</p>
@@ -403,22 +461,57 @@
             <div class="call-icon"><i class="fa-solid fa-phone"></i></div>
         </a>
 
-        <button class="modal-close" onclick="hideModal()">✕ &nbsp; Close</button>
+        <button class="modal-close" onclick="hideContactModal()">✕ &nbsp; Close</button>
+    </div>
+</div>
+
+<!-- Countdown Modal -->
+<div class="modal-overlay" id="countdownModal" onclick="closeCountdownOutside(event)">
+    <div class="countdown-modal" id="countdownModalInner">
+        <div class="modal-handle"></div>
+        <p class="modal-title">Time Until the Ceremony</p>
+
+        <div id="countdownDisplay">
+            <div class="countdown-grid">
+                <div class="countdown-box">
+                    <span class="countdown-number" id="cd-days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="cd-hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="cd-mins">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-box">
+                    <span class="countdown-number" id="cd-secs">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+            <p style="text-align:center; font-size:0.7rem; letter-spacing:2px; color:var(--gold); opacity:0.5; text-transform:uppercase; margin-top:4px;">
+                Wednesday, May 20 · 09:10 AM
+            </p>
+        </div>
+
+        <div class="ceremony-arrived" id="ceremonyArrived" style="display:none;">
+            🌸 The Ceremony Has Begun! 🌸
+        </div>
+
+        <button class="modal-close" onclick="hideCountdownModal()">✕ &nbsp; Close</button>
     </div>
 </div>
 
 <!-- Quick Navigation -->
 <div class="bottom-nav">
     <button onclick="showContacts()" class="nav-item" title="Call"><i class="fa-solid fa-phone"></i></button>
-    <button onclick="toggleMusic()" class="nav-item" id="musicBtn" title="Music"><i class="fa-solid fa-music"></i></button>
+    <button onclick="showCountdown()" class="nav-item" title="Countdown" id="countdownBtn">
+        <i class="fa-solid fa-hourglass-half"></i>
+    </button>
     <a href="https://maps.app.goo.gl/Uq23ZJhvr32nU83w5?g_st=aw" class="nav-item" title="Directions"><i class="fa-solid fa-location-arrow"></i></a>
     <button onclick="shareInvite()" class="nav-item" title="Share"><i class="fa-solid fa-share-nodes"></i></button>
 </div>
-
-<!-- Background Music -->
-<audio id="bgMusic" loop>
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
 
 <script>
     /* ── Entrance ── */
@@ -435,28 +528,63 @@
         setTimeout(() => document.getElementById('contactModalInner').classList.add('slide-up'), 10);
     }
 
-    function hideModal() {
+    function hideContactModal() {
         document.getElementById('contactModalInner').classList.remove('slide-up');
         setTimeout(() => document.getElementById('contactModal').classList.remove('show'), 400);
     }
 
-    function closeModalOutside(e) {
-        if (e.target === document.getElementById('contactModal')) hideModal();
+    function closeContactOutside(e) {
+        if (e.target === document.getElementById('contactModal')) hideContactModal();
     }
 
-    /* ── Music ── */
-    let musicPlaying = false;
-    function toggleMusic() {
-        const audio = document.getElementById('bgMusic');
-        const icon  = document.getElementById('musicBtn').querySelector('i');
-        if (musicPlaying) {
-            audio.pause();
-            icon.classList.remove('music-playing');
-        } else {
-            audio.play().catch(() => {});
-            icon.classList.add('music-playing');
+    /* ── Countdown Modal ── */
+    const CEREMONY_DATE = new Date('2026-05-20T09:10:00');
+    let countdownInterval = null;
+
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function updateCountdown() {
+        const now = new Date();
+        const diff = CEREMONY_DATE - now;
+
+        if (diff <= 0) {
+            document.getElementById('countdownDisplay').style.display = 'none';
+            document.getElementById('ceremonyArrived').style.display = 'block';
+            clearInterval(countdownInterval);
+            return;
         }
-        musicPlaying = !musicPlaying;
+
+        const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins  = Math.floor((diff / (1000 * 60)) % 60);
+        const secs  = Math.floor((diff / 1000) % 60);
+
+        const secEl = document.getElementById('cd-secs');
+        secEl.classList.remove('tick-pop');
+        void secEl.offsetWidth; // reflow to restart animation
+        secEl.classList.add('tick-pop');
+
+        document.getElementById('cd-days').textContent  = pad(days);
+        document.getElementById('cd-hours').textContent = pad(hours);
+        document.getElementById('cd-mins').textContent  = pad(mins);
+        document.getElementById('cd-secs').textContent  = pad(secs);
+    }
+
+    function showCountdown() {
+        document.getElementById('countdownModal').classList.add('show');
+        setTimeout(() => document.getElementById('countdownModalInner').classList.add('slide-up'), 10);
+        updateCountdown();
+        countdownInterval = setInterval(updateCountdown, 1000);
+    }
+
+    function hideCountdownModal() {
+        document.getElementById('countdownModalInner').classList.remove('slide-up');
+        setTimeout(() => document.getElementById('countdownModal').classList.remove('show'), 400);
+        clearInterval(countdownInterval);
+    }
+
+    function closeCountdownOutside(e) {
+        if (e.target === document.getElementById('countdownModal')) hideCountdownModal();
     }
 
     /* ── Particles ── */
